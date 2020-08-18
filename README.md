@@ -8,6 +8,7 @@ You can leave a ⭐️ to motivate me to keep doing more fun things!
 
 ## 🤓 Add a new book
 The Web App includes a button that let's you add the book you desire. When added, it will get added to the Database, thus rendered on screen.
+
 ![Add Functionality Gif](demo/add.gif)
 
 ## 😈 Delete ANY book
