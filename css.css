@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap');
+
+
+* {
+   font-family: 'Bungee Inline','Bungee','Press Start 2P', Helvetica, sans-serif;
+}
+
+body {
+   text-align: center;
+}
+
+header {
+   margin-top: 60px;
+   margin-bottom: 40px;
+}
+
+#Creator {
+   float: right;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+#Title {
+   margin: 0 auto;
+   text-align: center;
+   width: 80%;
+}
+
+h1 {
+   font-size: 60px;
+}
+
+h4 {
+   margin-top: -40px;
+}
+
+#Container{
+   margin: 0 auto;
+   text-align: center;
+   width: 80%;
+}
+
+#AddButton {
+   font-size: 20px;
+   margin-bottom: 30px;
+}
+
+#BookArray {
+   margin:30px auto;
+   text-align: center;
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+   grid-gap: 90px; 
+   width: 80%;
+}
+
+#Item {
+   border: 1px solid #888;
+   padding: 10%;
+   width: 180px;
+   height: 300px;
+   box-shadow: 10px 10px 25px #dedede;
+}
+
+/* The Modal (background) */
+.modal {
+   display: none; /* Hidden by default */
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Sit on top */
+   left: 0;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background-color: rgb(0,0,0); /* Fallback color */
+   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+ }
+ 
+ /* Modal Content/Box */
+ .modal-content {
+   background-color: #fefefe;
+   padding: 20px;
+   border: 1px solid #888;
+   text-align: center;
+   margin: 10% auto;
+   font-size: 30px;
+   width: 50%
+ }
+
+ #BookWindow, #AuthorWindow, #PagesWindow{
+    margin: 40px;
+ }
+
+ p {
+    margin-top: 40px;
+ }
+
+ #BookTitle, #Author, #Pages, #Read{
+   font-size: 30px;
+}
+
+#SubBut {
+   color:black;
+   font-size: 35px;
+   margin-bottom: 40px;
+   margin-right: 10px;
+}
+
+input[type='checkbox'] {
+   margin-top: -20px;
+   width:23px;
+   height:23px;
+   background:white;
+   border-radius:5px;
+   border:2px solid #555;
+}
+ 
+ /* The Close Button */
+ .close {
+   color: #aaa;
+   float: right;
+   font-size: 28px;
+   font-weight: bold;
+ }
+ 
+ .close:hover,
+ .close:focus {
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
+ } 
+
+.trashIcon {
+   float:right;
+   margin-top: -35px;
+   margin-right: -35px;
+   max-width: 15%;
+   height: auto;
+}
