@@ -1,4 +1,4 @@
-var DBLength = 0;
+var keysArray = [];
 
 const config = {
     apiKey: "AIzaSyCGPvqx6jbgRaVK1SNPCgE3-ydXpVFCZYg",
@@ -96,12 +96,14 @@ function renderArray(Library) {
         let element = document.createElement("div");
         element.setAttribute("id", "Item");
 
-        let image = document.createElement("input");
-        image.setAttribute("id", "trashIcon" + i);
-        image.setAttribute("class", "trashIcon");
-        image.type = "image";
-        image.src = "imgs/trash.png";
-        element.appendChild(image);
+        if (i != 0) {
+            let image = document.createElement("input");
+            image.setAttribute("id", "trashIcon" + (i));
+            image.setAttribute("class", "trashIcon");
+            image.type = "image";
+            image.src = "imgs/trash.png";
+            element.appendChild(image);
+        }
 
         let title = document.createElement("p");
         title.innerHTML = Library[i].title;
@@ -131,8 +133,7 @@ function setUpTrash() {
             let index = trashBtn[i].id;
             let bookRemoval = index[index.length - 1];
             Library.splice(bookRemoval, 1);
-            firebase.database().ref().child("book" + (parseInt(bookRemoval) + 1)).remove();
-            console.log("book" + (parseInt(bookRemoval) + 1))
+            deleteDB(bookRemoval);
             retrieveFromDB(Library);
         })   
     }
@@ -148,7 +149,8 @@ function addDB(title, author, pages, read) {
     };
   
     // Get a key for a new Post.
-    var newPostKey = "book" + (DBLength + 1); // book + dblength (book5 book6 book7 ...)
+    let lastBook = keysArray[keysArray.length - 1];
+    var newPostKey = "book" + (parseInt(lastBook[lastBook.length -1]) + 1); // book + dblength (book5 book6 book7 ...)
   
     // Write the new post's data simultaneously in the posts list and the user's post list.
     var updates = {};
@@ -157,25 +159,26 @@ function addDB(title, author, pages, read) {
     return firebase.database().ref().update(updates);
   }
 
-function deleteDB() {
-
+function deleteDB(bookRemoval) {
+    let key = keysArray[bookRemoval];
+    keysArray.splice(bookRemoval, 1);
+    firebase.database().ref().child(key).remove();
 }
 
 function retrieveFromDB() {
-    DBLength = 0;
+    keysArray = [];
     Library=[];
     var bookList = firebase.database().ref();
     bookList.on('value', function(snapshot) {
         let dbVal = snapshot.val();
         for(const booksObj in dbVal) {
+            keysArray.push(booksObj);
             let values = [];
             for(const valuesObj in dbVal[booksObj]) {
                 values.push(dbVal[booksObj][valuesObj]);
             }
             let newBookObj = new book(values[3], values[0], values[1], values[2]);
             addBookToLibrary(newBookObj)
-            console.log(values);
-            DBLength++;
         }
         renderArray(Library);
     });
