@@ -2,7 +2,7 @@
 __[OPEN THE PAGE](https://1063551.github.io/Digital-Library/)__
 
 A Digital Library website app to store your favourite books with a Realtime sync with a Database.
-This was made using HTML5, CSS, Vanilla Javascript and a Firebase Database.
+This was made using HTML5, CSS, Vanilla Javascript and Firebase.
 
 You can leave a ⭐️ to motivate me to keep doing more fun things!
 
